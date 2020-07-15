@@ -212,3 +212,7 @@ c(12,1,2);
 
 可以看到12，1变成参数，即函数只接受两个参数，对于多余参数不会理睬。
 
+
+
+本文借鉴了[[JavaScript中call,apply,bind方法的总结](https://www.cnblogs.com/pssp/p/5215621.html)](https://www.cnblogs.com/pssp/p/5215621.html)
+
