@@ -214,5 +214,5 @@ c(12,1,2);
 
 
 
-本文借鉴了[[JavaScript中call,apply,bind方法的总结](https://www.cnblogs.com/pssp/p/5215621.html)](https://www.cnblogs.com/pssp/p/5215621.html)
+本文借鉴了[JavaScript中call,apply,bind方法的总结](https://www.cnblogs.com/pssp/p/5215621.html)
 
