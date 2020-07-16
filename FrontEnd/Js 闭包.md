@@ -139,3 +139,9 @@ function factory(parameter){
 
 
 另一种是通过上面场景4的方法，封装一个变量，让其拥有私有属性。 本质上还是通过返回函数来实现的。
+
+
+
+
+
+参考：[JS闭包的理解及常见应用场景](https://www.cnblogs.com/Renyi-Fan/p/11590231.html)
