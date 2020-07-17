@@ -1,6 +1,6 @@
 # Vue 生命周期
 
-<img src="./1.jpg" alt="img"  />
+<img src="./img/1.jpg" alt="img"  />
 
 可以看到 vue 的生命周期分为几大阶段
 
@@ -21,6 +21,6 @@
 7. BeforeDestroy: 实例销毁前调用，在这一步中，实例仍然完全可用，还可以用 this 来取到实例，一般在这一步做一些重置操作，例如取消监听器，定时器
 8. Destroyed： 实例销毁后调用，调用后，所以的事件监听器会被移出，所有的子实例也会被销毁，该钩子在服务器端渲染期间不被调用
 
-![img](./2.jpg)
+![img](./img/2.jpg)
 
 参考： [Vue-生命周期详解](https://www.jianshu.com/p/672e967e201c) [vue生命周期详解](https://zhuanlan.zhihu.com/p/53039906)
