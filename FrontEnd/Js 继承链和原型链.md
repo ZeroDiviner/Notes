@@ -212,3 +212,45 @@ console.log(g.hasOwnProperty('vertices'));
 
 
 `.prototype` 是用于类的，而 `Object.getPrototypeOf()` 是用于实例的（instances），两者功能一致。
+
+
+
+## New 问题
+
+所谓 new 函数就是新建一个给定类的实例
+
+```javascript
+function Person (name) {
+    this.name = name;
+}
+p = new Person('bob')
+console.log(p.__proto__ == Person.prototype) //true
+```
+
+自己实现一个 new函数
+
+```javascript
+function new_(name){
+  		c = {}
+  		c.__proto__ = Person.prototype
+  		Person.call(c,name);
+}
+p = new_('bob')
+console.log(p)
+>>> Person{name: 'bob'}
+```
+
+实现一个更 general 一点的
+
+```javascript
+ function new_(constructor){
+   		c = {};
+   		c.__proto__ = constructor.prototype;
+			constructor.apply(c, Array.prototype.slice.call(arguments, 1));
+   		return c;
+ }
+p = new_(Person, 'bob')
+console.log(p)
+>>> Person{name: 'bob'}
+```
+
