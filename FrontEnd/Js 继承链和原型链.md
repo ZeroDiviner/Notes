@@ -254,3 +254,52 @@ console.log(p)
 >>> Person{name: 'bob'}
 ```
 
+
+
+
+
+
+
+## 面试题
+
+```javascript
+let a = {}
+let b = new Object()
+let c = function(){}
+function d(){
+  
+}
+let e = new d()
+let f = new c()
+console.log(typeof(c)) //function
+console.log(typeof(d)) //function
+
+
+```
+
+对象分为普通对象和函数对象，上面的 c, d 都是函数对象，对于函数对象 typeof 返回的就是 function。
+
+函数对象是有 prototype 属性的，普通对象只有\_\_proto\_\_属性, 所有对象都有\_\_proto\_\_属性.
+
+普通对象的\_\_proto\_\_属性指向其构造函数的 prototype, 例如
+
+```javascript
+console.log(a.__proto__ == Object.prototype) //true ========>      a={}
+console.log(b.__proto__ == Object.prototype) //true ========>      b = new Object()
+console.log(c.__proto__ == Function.prototype) // true ========>   c = function(){}
+console.log(e.__proto__ == d.prototype) // true ========>          e = new d()
+```
+
+
+
+因此对应构造函数也就是
+
+```javascript
+console.log(a.constructor == Object) //true
+console.log(b.constructor == Object) // true
+console.log(c.constructor == Function)  // true
+console.log(e.constructor == d) // true
+```
+
+
+
