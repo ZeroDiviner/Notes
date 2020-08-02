@@ -83,6 +83,30 @@ xhr.onreadystatechange = function(){
 }
 ```
 
+
+
+```javascript
+function ajax(url, method, async, param){
+		return new Promise((resolve, reject)=>{
+				let xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+      	xhr.send(param);
+      	xhr.onreadystatechange = ()=>{
+          	if (xhr.readyState == 4){
+								if (xhr.status == 200){
+										resolve(xhr.responseText)
+								}
+						}
+          	else{
+								reject(xhr.statusText)
+            }
+        }
+		})
+}
+```
+
+如果不用 onreadystatechange 可以使用 xhr.onload = function 这样就不需要再判断 readyState == 4了
+
 ## XMLHttpRequest  status状态码
 
 <img src="./img/10.png" alt="img" style="zoom:110%;" />
