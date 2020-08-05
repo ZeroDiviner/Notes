@@ -47,3 +47,21 @@
 10. js的 map 函数接收几个参数
 
     > map 函数接收一个参数，为一个 function，表示对于每个数组中的元素如何操作，类似 python 中的 lambda，这个函数接收3个参数，分别是 : 当前元素，当前元素下标，整个数组。
+
+11. Promise 如何在外部 resolve
+
+    > ```javascript
+    > var Obj = {
+    > ​	success:null,
+    > ​	error: null
+    > } 
+    > 
+    > new Promise((resolve, reject)=>{
+    > ​	Obj.success = resolve;
+    > ​	Obj.error =  reject
+    > }).then((data)=>{
+    > ​	console.log(`data == ${data}`)
+    > })
+    > Obj.success('Helloworld')
+    > // data == Helloworld
+    > ```
