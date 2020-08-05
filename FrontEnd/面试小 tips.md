@@ -14,3 +14,36 @@
 
    >  A: beforeCreate， created， beforeMount， mounted
 
+5. Q: vue 中 v-html 会导致什么问题
+
+   > V-html更新的是元素的 innerHTML 。内容按普通 HTML 插入，相当于直接操作了dom 不会作为 Vue 模板进行编译，因此可能会导致 xss 攻击， 这部分 html 没有经过 vue 编译器模板编译，因此单组件中的 scoped 样式不会被应用。
+
+6. Q：vue-router 匹配优先级(有时候同一个路径可以匹配多个路由)
+
+   > 谁先定义的就匹配谁，谁最先定义，则优先级最高。
+
+7. Q: Seo 是什么
+
+   > A: Search engine optimisation搜索引擎优化
+
+8. Q: window.requestAnimationFrame 和 setInterval 16的区别
+
+   > A: 浏览器刷新频率为1秒60帧，级16.67ms会刷新一次，16的话并不是严丝合缝的。
+   >
+   > 1. 并且 requestAnimationFrame会把每一帧的dom 操作集中起来去集中回流重绘，并且回流重绘事件紧跟刷新时间。
+   > 2. setInterval 是异步的，如果有其他线程干扰可能会导致丢帧
+   > 3. 对于隐藏或者不可见元素，requestAnimationFrame 不会回流重绘，减少 cpu，gpu 使用量
+   >
+   > 使用 requestAnimationFrame ： let id = window.requestAnimationFrame(animation), 其中 animation 是定义好的动画函数 
+   >
+   > 停止这个动画: cancelAnimationFrame(id) // id 就是上面定义的
+
+9. CSS 动画和 js 动画的区别
+
+   > css 动画用的是类似 requestAnimationFrame 的方法，集中 dom 操作，使得回流重绘频率紧跟刷新频率，且强制使用 GPU 加速，代码相对简单，但是对于动画控制不如 js 强。兼容性不如 js 动画
+   >
+   > js 动画功能强大，能够实现各种操作，但是因为是异步关系，如果有干扰线程，那么可能会导致丢帧。并且 js 动画大多兼容性没有问题，并且 js 动画比 css 动画多了一个解析的过程，性能不如 css 动画好。
+
+10. js的 map 函数接收几个参数
+
+    > map 函数接收一个参数，为一个 function，表示对于每个数组中的元素如何操作，类似 python 中的 lambda，这个函数接收3个参数，分别是 : 当前元素，当前元素下标，整个数组。
