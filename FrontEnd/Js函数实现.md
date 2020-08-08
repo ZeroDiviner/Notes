@@ -343,6 +343,59 @@ const bbb = singleTon.getInstance('bbb')
 
 可以看到上面的 getInstance 在 第一次调用之前，instance 为 null，在调用之后第一次创建了一个 instance, 而后再次调用的时候返回的 instance 还是之前的那个。
 
+
+
+## async/await 的优雅处理
+
+```javascript
+async function errorCaptured(asyncFun){
+	try{
+			let res = await asyncFun()
+      return [null, res]
+	}catch(e){
+			return [e, null]
+	}
+}
+
+let [err, res] = await errorCaptured(asyncFun)
+```
+
+
+
+## eventEmitter
+
+```javascript
+function eventEmitter(){
+		this.subs = {}
+}
+eventEmitter.prototype.$on = function(event, cb){
+		(this.subs[event] || (this.subs[event] = [])).push(cb)
+}
+eventEmitter.prototype.$trigger = function(event, ...args){
+		this.subs[event] && this.subs[event].forEach(cb =>{
+				cb(...args);
+		})
+}
+eventEmitter.prototype.$off = function(event, offcb){ //这里的参数 offcb 一定要是原来那个添加进来的函数，定义相同的函数不行
+		if (this.subs[event]){
+				let index = this.subs[event].findIndex((cb)=>cb === offcb)
+        this.subs[event].splice(index,1)
+      	if (!this.subs[event].length) delete this.subs[event]
+		}
+}
+
+eventEmitter.prototype.$once = function(event, onceCb){
+  	let _this = this; // 注意这里，自己 de了个bug..下面那个 this 如果不保存的话指向的是下面那个 function的 this
+		const cb = function(...args){ // 相当于把 onceCb 封装了一下，然后对这个 function 订阅，然后在订阅之后从订阅列表中移除。
+				onceCb(...args);
+      	_this.$off(event, cb)
+		}
+    this.$on(event, cb)
+}
+```
+
+
+
 参考:
 
 1. [js 继承实现之Object.create](https://segmentfault.com/a/1190000014592412?utm_source=channel-hottest)
