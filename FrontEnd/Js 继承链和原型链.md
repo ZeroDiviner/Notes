@@ -4,7 +4,9 @@ Js 中，每个实例对象(object)都有一个私有属性\_\_proto\_\_,指向�
 
 \_\_,层层向上，直到等于**null** 为止, 因此**原型链的顶端其实是 null**.
 
+个人理解来说，js 的 prototype 就是为了实现面向对象的继承和多态，因为 js 和 python 这样的语言类似，在底层是万物皆对象的，这可能因为 js 是 c++编写的语言，而C++最著名的一点就是其面向对象的属性，因此当一个面向对象的语言写了一些 class 之后，为了代码复用，一定会实现继承。js就是用这样一个 prototype 的属性指向或者保存一个自己父类的引用(应该是只保存了引用，因为在子类实例中修改 prototype 中的值，原 class 的属性不变)，以方便一个对象进行调用，这也就是 js 的继承链所实现的功能，即在子类上找不到的方法和属性，就去原型链上去寻找。
 
+我也曾经考虑过，为什么 js 不把这个 class 设计成像 python 一样的，即新建一个 array 实例，所有的属性方法就挂载在 array 对象下，而不是使用 prototype，思考的结果是: 为了更好的复用，即允许开发人员也能够对于这些class 进行新的封装和重写。
 
 几乎所有 JavaScript 中的对象都是位于原型链顶端的 [`Object`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object) 的实例。
 
