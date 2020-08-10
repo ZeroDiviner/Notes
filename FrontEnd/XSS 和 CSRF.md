@@ -53,7 +53,7 @@ Cross site request forgery，跨站请求欺骗，利用的是对于浏览器的
 
 1. 尽量使用 Post 而不是 Get
 2. 将 cookie 属性设置为 Httponly，这样通过程序(js 脚本或者 applet)就无法读到 cookie，也就避免了伪造 cookie 的行为
-3. 使用额外参数 token，每次会话服务器会产生一个随机 token，在受信任网站 A 中某处存放(不在 cookie)，提交的时候会连带 token 一起提交，因此其他网站无法伪造这个 token
+3. 使用额外参数 token，每次会话服务器会产生一个随机 token，在受信任网站 A 中某处存放(可以存放在 cookie 或者 localstorage 中)，提交的时候会连带 token 一起提交，即在请求中会增加一个字段，因此其他网站因为无法得到 cookie，因此无法增加这个字段，所以无法伪造这个 token
 4. 通过 http 头的Referer字段辨认，当用户在本页面发起请求的时候，refer 值是http://www.xxx.com(对于本例)，但是如果在外源网站发起申请 referer 就会是外源网址。
 
 ```javascript
