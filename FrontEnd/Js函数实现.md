@@ -396,6 +396,68 @@ eventEmitter.prototype.$once = function(event, onceCb){
 
 
 
+
+
+## 函数去重
+
+### 普通函数去重
+
+```javascript
+b = [1,2,3,4,3,2,5,1,6,7,7,8]
+const dedup = arr =>[...new Set(arr)]
+```
+
+## 不用 set 去重(indexOf)
+
+```javascript
+const dedup = arr=>{
+    let res=[];
+    arr.forEach(item=>{
+        if(res.indexOf(item)==-1) res.push(item)
+    })
+    return res;
+}
+```
+
+## 不用 set 去重(includes)
+
+```javascript
+const dedup = arr =>{
+		let res= [];
+  	arr.forEach(item=>{
+				if(!res.includes(item)) res.push(item)
+		})
+		return res;
+}
+```
+
+## 不用 set 去重(filter)
+
+```javascript
+const dedup = arr => arr.filter((item, index)=>arr.indexOf(item) == index)
+```
+
+## 不用 set去重(filter + reduce)
+
+```javascript
+const dedup = arr =>arr.reduce((pre,cur)=>pre.includes(cur)?pre:[...pre, cur],[])
+```
+
+## 复杂数组去重
+
+```javascript
+a = [1,2,3,2,3,1,4,5,[5,6],[5,6],[1,2],{key:11}, {key:11},{key2:22}]
+const dedup = arr =>{
+		let map = new Map()
+    arr.forEach(item=>{
+				map.set(JSON.stringify(item), true)
+		})
+		return Array.from(map.keys()).map(item=>JSON.parse(item))
+}
+```
+
+
+
 参考:
 
 1. [js 继承实现之Object.create](https://segmentfault.com/a/1190000014592412?utm_source=channel-hottest)
