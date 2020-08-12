@@ -458,6 +458,59 @@ const dedup = arr =>{
 
 
 
+## 实现 Promise.all
+
+```javascript
+Promise.All = function(promises){
+  	let res = [];
+  	let len = promises.length;
+		return new Promise((resolve, reject)=>{
+      	for(let i = 0;i<len; i++){
+						Promise.resolve(promises[i]).then(data=>{
+								 res.push(data);
+								 if(res.length == len) resolve(res) 
+						}, err=>reject(err))
+				}
+    })
+}
+
+var promise1 = Promise.resolve(3);
+var promise2 = 42;
+var promise3 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 100, 'foo');
+});
+
+Promise.All([promise1, promise2, promise3]).then(data=>{console.log(data)})
+```
+
+## 实现Promise.race
+
+```javascript
+Promise.Race = function(promises){
+		return new Promise((resolve, reject)=>{
+				for(let i = 0; i< promises.length; i++){
+						Promise.resolve(promises[i]).then(res=>{
+									resolve(res);
+						}, err=>reject(err))
+				}
+		});
+}
+
+var promise1 = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 500, 'one');
+});
+
+var promise2 = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 100, 'two');
+});
+
+Promise.Race([promise1, promise2]).then(function(value) {
+  console.log(value);
+});
+```
+
+
+
 参考:
 
 1. [js 继承实现之Object.create](https://segmentfault.com/a/1190000014592412?utm_source=channel-hottest)
