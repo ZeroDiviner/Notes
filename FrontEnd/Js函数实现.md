@@ -509,6 +509,40 @@ Promise.Race([promise1, promise2]).then(function(value) {
 });
 ```
 
+## Js 快排1
+
+```javascript
+let a = [28,1,14,7,5,38,21,9,42,74,21,10,24,6,77,19];
+const quickSort = function(arr){
+  if (arr.length<=1) return arr;
+  let [left,right,pivot] = [[],[],arr[0]]
+  arr.slice(1).map(item=>item>pivot?right.push(item):left.push(item))
+  return [...quickSort(left), pivot, ...quickSort(right)]
+}
+quickSort(a)
+//[1, 5, 6, 7, 9, 10, 14, 19, 21, 21, 24, 28, 38, 42, 74, 77]
+```
+
+## Js 快排
+
+```javascript
+let a = [28,1,14,7,5,38,21,9,42,74,21,10,24,6,77,19];
+const quickSort = function(arr, start, end){
+    if (start>=end) return;
+    let [l,r] = [start,end];
+    while(l<r){
+        while(l<r && arr[r]>=arr[start]) r--; // 注意这里是先 r--再 l++， 注意这里是 start 不是0， 注意这里是>=不是>
+        while(l<r && arr[l]<=arr[start]) l++;
+        [arr[l],arr[r]] = [arr[r], arr[l]];
+    }
+    [arr[l],arr[start]] = [arr[start],arr[l]];
+    quickSort(arr, start,l-1);
+    quickSort(arr, l+1, end);
+}
+quickSort(a, 0, 15);
+//[1, 5, 6, 7, 9, 10, 14, 19, 21, 21, 24, 28, 38, 42, 74, 77]
+```
+
 
 
 参考:
