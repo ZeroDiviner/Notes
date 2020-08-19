@@ -543,6 +543,51 @@ quickSort(a, 0, 15);
 //[1, 5, 6, 7, 9, 10, 14, 19, 21, 21, 24, 28, 38, 42, 74, 77]
 ```
 
+## 手写 promise
+
+```javascript
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED  = 'rejected'
+class promise{
+		constructor(executor){
+				this.value = undefined;
+      	this.status = PENDING;
+      	this.msg = undefined;
+      	this.onResolve = [];
+      	this.onReject = [];
+      	let resolve = (value)=>{
+						this.status = FULFILLED;
+          	this.value = value;
+          	this.onResolve.forEach(fn=>fn())  // 如果这时候里面没有函数，则在下面fulfill(this.value)直接执行，如果有则相当于是发布订阅模式。
+        }
+        let reject = (msg) =>{
+						this.msg = msg;
+          	this.status = REJECTED;
+          	this.onReject.forEach(fn=>fn())
+				}
+        try{
+          	executor(resolve, reject);
+        }
+      	catch(e){
+          	reject(e)
+        }
+		}
+  	then(fulfill, reject){
+				if (this.status == FULFILLED){ // 执行到 then 的时候如果已经是 fulfilled 那么就立刻执行传入的 fulfill函数
+						fulfill(this.value)
+				}
+      	if(this.status == REJECTED){ // 执行到 then 的时候如果已经是 rejected 那么就立刻执行传入的 reject函数
+						reject(this.value)
+				}
+      	if(this.status == PENDING){ // 执行then 的时候如果是 Pending，则把对应处理函数加入 onResolve 和 onReject 这两个 array 中保存，等 resolve 或者 reject 的时候
+						this.onResolve.push(()=>fulfill(this.value));
+          	this.onReject.push(()=>reject(this.msg));
+				}
+		}
+}
+```
+
 
 
 参考:
