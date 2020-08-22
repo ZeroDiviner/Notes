@@ -556,7 +556,7 @@ class promise{
       	this.msg = undefined;
       	this.onResolve = [];
       	this.onReject = [];
-      	let resolve = (value)=>{
+      	let resolve = (value)=>{ // 这里注意一定要是箭头函数，否则this会指向function
 						this.status = FULFILLED;
           	this.value = value;
           	this.onResolve.forEach(fn=>fn())  // 如果这时候里面没有函数，则在下面fulfill(this.value)直接执行，如果有则相当于是发布订阅模式。
