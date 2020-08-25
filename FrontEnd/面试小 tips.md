@@ -65,3 +65,15 @@
     > Obj.success('Helloworld')
     > // data == Helloworld
     > ```
+
+12. [] == ![] 为 true, 而 {} == !{} 为 false
+
+    > 首先，！的优先级要高于 == ，因此先计算的是右边，因此右边相当于是 false
+    >
+    > 计算右边完成之后，对于以 Boolean 的变量和一个引用类型变量，二者比较会遵循一个原则：
+    >
+    > 先调用引用对象的 valueOf 方法，如果不可以的话，就调用 引用对象的 toString()方法
+    >
+    > 而 []调用 toString()方法结果为**""**, 因此相当于 false, 所以[] == ![]
+    >
+    > 但是{} 调用 toString()方法结果为"[object Object]", 因此相当于是 true == false, 所以{} == !{}为 false
