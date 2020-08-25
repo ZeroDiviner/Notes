@@ -77,3 +77,7 @@
     > 而 []调用 toString()方法结果为**""**, 因此相当于 false, 所以[] == ![]
     >
     > 但是{} 调用 toString()方法结果为"[object Object]", 因此相当于是 true == false, 所以{} == !{}为 false
+
+13. 上传的图片如何可视化
+
+    > 可以转换为 base64格式进行可视化，img的 src 可以接受 base64编码，canvas 下有一个 API 叫做canvas.toDataURL()， 用于把图片转换为 base64，转化后的图片是8位的位图图片。
