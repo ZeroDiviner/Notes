@@ -174,7 +174,9 @@
 
     > 设计一个网页，但是能够兼容多个端，移动/pc, 而不是为每个终端做一个特定的版本。通过媒体查询来实现，页面的头部必须有
     >
+    > ```javascript
     > <meta name = 'viewport' content = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    > ```
 
 20. 如何让 chrome 支持小于12px 的字体
 

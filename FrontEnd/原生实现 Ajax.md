@@ -3,7 +3,7 @@
 Ajax 技术核心是 XMLHttpRequest 对象(简称 XHR)，XHR 的出现，提供了向服务器发送请求和解析服务器响应提供了流畅的接口。能够以**异步方式从服务器获取更多的信息，这就意味着，用户只要触发某一事件，在不刷新网页的情况下，更新服务器最新的数据**。
 
 ```javascript
-var xhr = XMLHttpRequest()
+var xhr = new XMLHttpRequest()
 ```
 
 ![img](./img/7.jpg)
@@ -48,7 +48,7 @@ if (xhr.status == 200){
 1. Get 方法
 
 ```javascript
-let xhr = XMLHttpRequest()
+let xhr = new XMLHttpRequest()
 xhr.open('GET', 'http:xxx.com/api?id=1&name=3', true) // 这里 true 代表异步请求 ,?后面跟着 get 请求的参数
 xhr.send(null) //因为是 GET 所以请求的 content 为空
 xhr.onreadystatechange = function(){
@@ -64,7 +64,7 @@ xhr.onreadystatechange = function(){
 2. Post方法
 
 ```javascript
-let xhr = XMLHttpRequest()
+let xhr = new XMLHttpRequest()
 xhr.open('POST', 'http:xxx.com/apipost',true)
 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 xhr.send(data)
