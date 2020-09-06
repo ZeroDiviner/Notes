@@ -1,6 +1,6 @@
 # Restful API
 
-Rest, 全称为Representational State Transfer，表述性状态转移。
+Rest, 全称为(Representational State Transfer)，表述性状态转移。
 
 Rest 技术并没有创造新的技术，组件或者服务，而是更好的使用Web 标准中的一些准则和约束，虽然 Rest 受到Web 影响很深，但是理论上 Rest 风格并不是绑定在 HTTP 上的，但是目前 HTTP 是唯一和 Rest 相关的实例。
 
