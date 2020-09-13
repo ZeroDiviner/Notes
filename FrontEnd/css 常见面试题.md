@@ -244,3 +244,9 @@
     > 块级元素总是在新的一行开始，高度，宽度，边距都可以控制
     >
     > 行内元素和其他元素同在一行内，宽高不可变，宽度就是其文字或者图片的宽度，只能容纳文本或者其他行内元素(margin 和 padding 只有左右有效，上下无效)
+    
+29. 块级元素和行内元素举例：
+
+    > 块级：form, div, header, footer, nav, ul, ol，p, h
+    >
+    > 行内: span, b, em, i, li, input, textarea img, a
