@@ -81,3 +81,36 @@
 13. 上传的图片如何可视化
 
     > 可以转换为 base64格式进行可视化，img的 src 可以接受 base64编码，canvas 下有一个 API 叫做canvas.toDataURL()， 用于把图片转换为 base64，转化后的图片是8位的位图图片。
+    
+14. 浏览器关闭前执行事件怎么完成
+
+    > 有一个事件叫做 onBeforeUnload，所绑定的事件可以在关闭之前执行
+
+15. head 中有哪些标签
+
+    > \<script\>, \<style\>, \<link\>, \<meta\>, \<noscript\>, \<title\>
+
+16. \<link\>标签的作用
+
+    > rel="stylesheet" 表示 css样式表
+    >
+    > rel="canonical" href="..." 搜索引擎
+    >
+    > rel = 'prefetch' 浏览器预先拉取资源
+    >
+    > rel = 'dns-prefetch'预先拉取 dns 资源
+    >
+    > rel = 'icon'表示页面的 icon
+
+17. \<meta\>标签的作用
+
+    > http-equiv = 'key-words' content = 'key1, key2' 用于浏览器 seo 关键字部分
+    >
+    > http-equiv = 'description' content = '描述' 用于浏览器 seo 网页描述
+    >
+    > http-equiv="Refresh" content="2；URL=http://" 自动刷新并重定向
+    >
+    > http-equiv="cache-control" content="no-cache, must-revalidate" 删除缓存，再访问需要重新下载。
+    >
+    > name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" 初始化设备尺寸
+

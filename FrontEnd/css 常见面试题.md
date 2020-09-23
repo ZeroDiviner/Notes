@@ -96,7 +96,7 @@
 
 9. Css 中 visibility 的collapse 属性，在不同浏览器中有什么区别
 
-   > 当一个元素的 visibility 被设置为 collapse 的时候，对于一般元素来说和 hidden 一样
+   >  当一个元素的 visibility 被设置为 collapse 的时候，对于一般元素来说和 hidden 一样
    >
    > 在 chrome 中， collapse 和 hidden 没区别
    >
